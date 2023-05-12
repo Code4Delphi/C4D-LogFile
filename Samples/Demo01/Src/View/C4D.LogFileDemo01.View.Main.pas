@@ -15,7 +15,6 @@ uses
   Vcl.StdCtrls,
   Vcl.Buttons,
   PngBitBtn,
-  C4D.LogFile,
   ShellAPI;
 
 type
@@ -42,6 +41,9 @@ var
   C4DLogFileDemo01ViewMain: TC4DLogFileDemo01ViewMain;
 
 implementation
+
+uses
+  C4D.LogFile;
 
 {$R *.dfm}
 
