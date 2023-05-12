@@ -1,0 +1,9 @@
+{
+	"name": "C4D-LogFile",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "https://github.com/Code4Delphi/C4D-LogFile.git",
+	"mainsrc": "Src",
+	"projects": [],
+	"dependencies": {}
+}
