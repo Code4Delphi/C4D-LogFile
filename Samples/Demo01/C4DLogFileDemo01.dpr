@@ -6,9 +6,11 @@ uses
 
 {$R *.res}
 
+
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TC4DLogFileDemo01ViewMain, C4DLogFileDemo01ViewMain);
   Application.Run;
+
 end.
