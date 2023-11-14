@@ -98,8 +98,8 @@ end;
 
 procedure TC4DLogFileDemo01ViewMain.btnAddClick(Sender: TObject);
 begin
+  //A PASTA PODE SER SETADA APENAS UMA VEZ (NO CREATE DO PROJETO POR EXEMPLO)
   if(DirectoryExists(edtPastaLog.Text))then
-    //A PASTA PODE SER SETADA APENAS UMA VEZ (NO CREATE DO PROJETO POR EXEMPLO)
     C4DLogFile.SetDir(edtPastaLog.Text);
 
   C4DLogFile.AddLog('Linha 01: ' + edtTexto.Text);

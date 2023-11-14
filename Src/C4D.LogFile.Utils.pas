@@ -22,28 +22,28 @@ end;
 
 class function TC4DLogFileUtils.RemoveAcento(AValue: string): string;
 const
-  C_COM_ACENTOS = 'àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜ';
-  C_SEM_ACENTOS = 'aaeouaoaeioucuAAEOUAOAEIOUCU';
+  COM_ACENTOS = 'àâêôûãõáéíóúçüÀÂÊÔÛÃÕÁÉÍÓÚÇÜ';
+  SEM_ACENTOS = 'aaeouaoaeioucuAAEOUAOAEIOUCU';
 var
   i: Integer;
 begin
   for i := 1 to AValue.Length do
-    if(Pos(AValue[i], C_COM_ACENTOS) <> 0)then
-      AValue[i] := C_SEM_ACENTOS[Pos(AValue[i], C_COM_ACENTOS)];
+    if(Pos(AValue[i], COM_ACENTOS) <> 0)then
+      AValue[i] := SEM_ACENTOS[Pos(AValue[i], COM_ACENTOS)];
 
   Result := AValue;
 end;
 
 class function TC4DLogFileUtils.TrocaSimbolos(AValue: string): string;
 const
-  C_SIMBOLOS_OLD = 'ºª&®½¼ßµşıİ¨æÆø£Øƒª¿|~^´`';
-  C_SIMBOLOS_NEW = 'oae   BupyY   o 0faw     ';
+  SIMBOLOS_OLD = 'ºª&®½¼ßµşıİ¨æÆø£Øƒª¿|~^´`';
+  SIMBOLOS_NEW = 'oae   BupyY   o 0faw     ';
 var
   i: Integer;
 begin
   for i := 1 to AValue.Length do
-    if(Pos(AValue[i], C_SIMBOLOS_OLD) <> 0)then
-      AValue[i] := C_SIMBOLOS_NEW[Pos(AValue[i], C_SIMBOLOS_OLD)];
+    if(Pos(AValue[i], SIMBOLOS_OLD) <> 0)then
+      AValue[i] := SIMBOLOS_NEW[Pos(AValue[i], SIMBOLOS_OLD)];
 
   Result := AValue;
 end;
