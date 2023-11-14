@@ -8,44 +8,44 @@ uses
 type
   TC4DLogFileUtils = class
   public
-    class function RemoveAcento(AStr: String): String;
-    class function RemoveAcentoTrocaSimbolos(AStr: String): String;
-    class function TrocaSimbolos(AStr: String): String;
+    class function RemoveAcento(AValue: string): string;
+    class function RemoveAcentoTrocaSimbolos(const AValue: string): string;
+    class function TrocaSimbolos(AValue: string): string;
   end;
 
 implementation
 
-class function TC4DLogFileUtils.RemoveAcentoTrocaSimbolos(AStr: String): String;
+class function TC4DLogFileUtils.RemoveAcentoTrocaSimbolos(const AValue: string): string;
 begin
-   Result := TrocaSimbolos(RemoveAcento(AStr));
+  Result := TrocaSimbolos(RemoveAcento(AValue));
 end;
 
-class function TC4DLogFileUtils.RemoveAcento(AStr: String): String;
+class function TC4DLogFileUtils.RemoveAcento(AValue: string): string;
 const
- C_COM_ACENTOS = '‡‚ÍÙ˚„ı·ÈÌÛ˙Á¸¿¬ ‘€√’¡…Õ”⁄«‹';
- C_SEM_ACENTOS = 'aaeouaoaeioucuAAEOUAOAEIOUCU';
+  COM_ACENTOS = '‡‚ÍÙ˚„ı·ÈÌÛ˙Á¸¿¬ ‘€√’¡…Õ”⁄«‹';
+  SEM_ACENTOS = 'aaeouaoaeioucuAAEOUAOAEIOUCU';
 var
- i: Integer;
+  i: Integer;
 begin
-   for i := 1 to Length(AStr) do
-     if(Pos(AStr[i], C_COM_ACENTOS) <> 0)then
-       AStr[i] := C_SEM_ACENTOS[Pos(AStr[i], C_COM_ACENTOS)];
+  for i := 1 to AValue.Length do
+    if(Pos(AValue[i], COM_ACENTOS) <> 0)then
+      AValue[i] := SEM_ACENTOS[Pos(AValue[i], COM_ACENTOS)];
 
-   Result := AStr;
+  Result := AValue;
 end;
 
-class function TC4DLogFileUtils.TrocaSimbolos(AStr: String): String;
+class function TC4DLogFileUtils.TrocaSimbolos(AValue: string): string;
 const
- C_SIMBOLOS_OLD = '∫™&ÆΩºﬂµ˛˝›®Ê∆¯£ÿÉ™ø|~^¥`';
- C_SIMBOLOS_NEW = 'oae   BupyY   o 0faw     ';
+  SIMBOLOS_OLD = '∫™&ÆΩºﬂµ˛˝›®Ê∆¯£ÿÉ™ø|~^¥`';
+  SIMBOLOS_NEW = 'oae   BupyY   o 0faw     ';
 var
- i: Integer;
+  i: Integer;
 begin
-   for i := 1 to Length(AStr)do
-     if(Pos(AStr[i], C_SIMBOLOS_OLD) <> 0)then
-       AStr[i] := C_SIMBOLOS_NEW[Pos(AStr[i], C_SIMBOLOS_OLD)];
+  for i := 1 to AValue.Length do
+    if(Pos(AValue[i], SIMBOLOS_OLD) <> 0)then
+      AValue[i] := SIMBOLOS_NEW[Pos(AValue[i], SIMBOLOS_OLD)];
 
-   Result := AStr;
+  Result := AValue;
 end;
 
 end.
