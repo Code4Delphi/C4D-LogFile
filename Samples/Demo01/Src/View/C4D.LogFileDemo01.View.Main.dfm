@@ -25,10 +25,6 @@ object C4DLogFileDemo01ViewMain: TC4DLogFileDemo01ViewMain
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 400
-    ExplicitTop = 136
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Label3: TLabel
       Left = 24
       Top = 17

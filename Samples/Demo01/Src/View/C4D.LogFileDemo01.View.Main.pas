@@ -53,6 +53,7 @@ uses
 procedure TC4DLogFileDemo01ViewMain.FormCreate(Sender: TObject);
 begin
   ReportMemoryLeaksOnShutdown := True;
+  edtPastaLog.Text := ExtractFilePath(ParamStr(0)) + '\Logs\';
 end;
 
 procedure TC4DLogFileDemo01ViewMain.FormShow(Sender: TObject);
@@ -102,8 +103,7 @@ end;
 procedure TC4DLogFileDemo01ViewMain.btnAddLogClick(Sender: TObject);
 begin
   //A PASTA PODE SER SETADA APENAS UMA VEZ (NO CREATE DO PROJETO POR EXEMPLO)
-  if(DirectoryExists(edtPastaLog.Text))then
-    TC4DLogFile.GetInstance.SetDir(edtPastaLog.Text);
+  TC4DLogFile.GetInstance.SetDir(edtPastaLog.Text);
 
   TC4DLogFile.GetInstance
     .AddLog('Linha 01: ' + edtTexto.Text)
