@@ -12,12 +12,11 @@ type
     FDir: string;
     constructor Create;
   public
+    class function GetInstance: TC4DLogFile;
     function SetDir(const ADir: string): TC4DLogFile;
     function GetDir: string;
     function AddLog(const AStrLog: string): TC4DLogFile;
   end;
-
-function C4DLogFile: TC4DLogFile;
 
 implementation
 
@@ -25,13 +24,13 @@ uses
   C4D.LogFile.Utils;
 
 var
-  FInstance: TC4DLogFile;
+  Instance: TC4DLogFile;
 
-function C4DLogFile: TC4DLogFile;
+class function TC4DLogFile.GetInstance: TC4DLogFile;
 begin
-  if(not Assigned(FInstance))then
-    FInstance := TC4DLogFile.Create;
-  Result := FInstance;
+  if(not Assigned(Instance))then
+    Instance := Self.Create;
+  Result := Instance;
 end;
 
 constructor TC4DLogFile.Create;
@@ -43,7 +42,7 @@ function TC4DLogFile.SetDir(const ADir: string): TC4DLogFile;
 begin
   Result := Self;
   if not DirectoryExists(ADir)then
-    CreateDir(ADir);
+    ForceDirectories(ADir);
   FDir := ADir;
 end;
 
@@ -80,7 +79,7 @@ end;
 initialization
 
 finalization
-  if(Assigned(FInstance))then
-    FreeAndNil(FInstance);
+  if(Assigned(Instance))then
+    FreeAndNil(Instance);
 
 end.

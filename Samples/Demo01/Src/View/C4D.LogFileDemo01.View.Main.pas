@@ -15,21 +15,24 @@ uses
   Vcl.StdCtrls,
   Vcl.Buttons,
   PngBitBtn,
-  ShellAPI;
+  ShellAPI, Vcl.ExtCtrls;
 
 type
   TC4DLogFileDemo01ViewMain = class(TForm)
-    btnAdd: TButton;
-    edtTexto: TEdit;
+    Panel9: TPanel;
     Label3: TLabel;
+    btnAddLog: TButton;
+    edtTexto: TEdit;
     edtPastaLog: TEdit;
     btnPastaImg: TPngBitBtn;
     btnAbrirPasta: TButton;
+    btnTeste: TButton;
     procedure FormShow(Sender: TObject);
-    procedure btnAddClick(Sender: TObject);
+    procedure btnAddLogClick(Sender: TObject);
     procedure btnPastaImgClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnAbrirPastaClick(Sender: TObject);
+    procedure btnTesteClick(Sender: TObject);
   private
     procedure AddTextoTesteNoEdt;
     function SelecionaDiretorio(const ADefaultFolder: string): string;
@@ -96,15 +99,24 @@ begin
   ShellExecute(Application.Handle, nil, PWideChar(edtPastaLog.Text), '', nil, SW_ShowNormal);
 end;
 
-procedure TC4DLogFileDemo01ViewMain.btnAddClick(Sender: TObject);
+procedure TC4DLogFileDemo01ViewMain.btnAddLogClick(Sender: TObject);
 begin
   //A PASTA PODE SER SETADA APENAS UMA VEZ (NO CREATE DO PROJETO POR EXEMPLO)
   if(DirectoryExists(edtPastaLog.Text))then
-    C4DLogFile.SetDir(edtPastaLog.Text);
+    TC4DLogFile.GetInstance.SetDir(edtPastaLog.Text);
 
-  C4DLogFile.AddLog('Linha 01: ' + edtTexto.Text);
-  C4DLogFile.AddLog('Linha 02: ' + edtTexto.Text);
+  TC4DLogFile.GetInstance
+    .AddLog('Linha 01: ' + edtTexto.Text)
+    .AddLog('Linha 02: ' + edtTexto.Text);
   Self.AddTextoTesteNoEdt;
+end;
+
+procedure TC4DLogFileDemo01ViewMain.btnTesteClick(Sender: TObject);
+//var
+//  LC4DLogFile: TC4DLogFile;
+begin
+  //LC4DLogFile := TC4DLogFile(TC4DLogFile.NewInstance);
+  //LC4DLogFile.SetDir(edtPastaLog.Text).AddLog('Linha XXX Nova Instancia: ' + edtTexto.Text)
 end;
 
 end.
