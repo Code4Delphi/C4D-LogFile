@@ -1,8 +1,8 @@
 #  C4D-LogFile - Geração de logs em arquivos
 <p align="center">
-  <a href="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/C4D-Logo.png">
-    <img alt="Horse" height="100" src="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Img/c4d-logo-100x100.png">
-  </a>  
+  <a href="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/C4D-Logo.png">
+    <img alt="Code4Delphi" height="100" src="https://github.com/Code4Delphi/Code4D-Wizard/blob/master/Images/c4d-logo-100x100.png">
+  </a> 
 </p>
 Com o C4D-LogFile, você pode gravar logs em arquivos, de forma rápida e simples de qualquer lugar de seu sistema. 
 
